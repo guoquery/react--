@@ -18,20 +18,17 @@ class LRequest {
     return new Promise(async (resolve: any, reject: any) => {
       switch (res.status) {
         case 200: // 请求成功
-          // window.location.href = window.location.origin + "#Login";
-          // // resolve();
-          // resolve(await res.json());
+          resolve(await res.json());
           break;
         case 0: // 错误
           break;
-
         case 400: //
-          // reject(res.json());
+          reject(await res.json());
           break;
         case 302: // 重定向
         case 401: // 未登录状态码(登陆时白)
-          window.location.href = window.location.origin + "#/Login";
           reject(await res.json());
+          window.location.href = window.location.origin + "#/Login";
           break;
         case 402:
         case 403:
@@ -79,22 +76,13 @@ class LRequest {
     return new Promise(async (resolve: any, reject: any) => {
       try {
         const response: Response = await fetch(url, option);
-        console.log(response.status);
-        console.log(response.statusText);
+        // console.log(response.status);
+        // console.log(response.statusText)
         resolve(await this.interceptors.response(response));
       } catch (error) {
-        console.error(error, "error");
         reject(error);
       }
     });
-    // try {
-    //   const response: Response = await fetch(url, option);
-    //   console.log(response.status);
-    //   console.log(response.statusText);
-    //   return await this.interceptors.response(response);
-    // } catch (error) {
-    //   console.error(error, "error");
-    // }
   }
 
   /**
