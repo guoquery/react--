@@ -1,4 +1,5 @@
-import { request } from "../utils/request";
+import { useState } from "react";
+import { request } from "./request";
 
 export async function getToken(param: any) {
   return request.urlencodedPost("token", param);

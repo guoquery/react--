@@ -11,16 +11,19 @@ export const BaseLayout: React.FC = () => {
   const [MenuData, setMenuData] = useState([]);
   useEffect(() => {
     if (!api.token || api.token === "") {
-      navigate("/login");
+      // navigate("/login");
     } else {
       getOwnData();
     }
   }, [navigate]);
+  useEffect(() => {
+    getOwnData();
+  }, []);
 
   const getOwnData = () => {
-    getUserOwnFunc().then((res: any) => {
-      console.log(res, "res");
-    });
+    // getUserOwnFunc().then((res: any) => {
+    //   console.log(res, "res");
+    // });
     getUserOwnMenu().then((res: any) => {
       console.log(res, "res");
       setMenuData(res.Data);

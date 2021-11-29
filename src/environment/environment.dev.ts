@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  BASE_URL: 'https://integ.mosip.io/',
-  apiUrl: 'https://solid-api.laxtonportal.com/',           // 32server
+  BASE_URL: "https://integ.mosip.io/",
+  apiUrl: "https://solid-api.laxtonportal.com/", // 32server
   // apiUrl: 'http://192.168.100.67:30002/'                 // H local
   // apiUrl: 'http://192.168.101.3:3020/'               // Mike local
   // apiUrl: 'http://192.168.100.189:31002/'           // Taylor local
