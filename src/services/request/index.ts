@@ -2,10 +2,6 @@ import { environment } from "../../environment/environment";
 import { environment as devEnvironment } from "../../environment/environment.dev";
 import { api } from "../api.service";
 import { encodedParam } from "../../utils/common";
-import { useNavigate } from "react-router-dom";
-
-// console.warn(process.env.NODE_ENV, "test", process, baseApiUrl);
-//  headerConfig: any = {
 class LRequest {
   static config: any = {};
   private _api: any = api;
@@ -51,7 +47,7 @@ class LRequest {
       const requestOption = {
         ...{
           headers: {
-            Authorization: `Bearer ${this._api.token}`,
+            // Authorization: `Bearer ${this._api.token}`,
             Accept: "application/json",
             "Content-Type": "application/json",
           },
@@ -80,7 +76,8 @@ class LRequest {
         // console.log(response.statusText)
         resolve(await this.interceptors.response(response));
       } catch (error) {
-        reject(error);
+        // console.log("error", error);
+        reject();
       }
     });
   }

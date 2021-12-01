@@ -9,25 +9,19 @@ export const BaseLayout: React.FC = () => {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   const [MenuData, setMenuData] = useState([]);
+
   useEffect(() => {
-    if (!api.token || api.token === "") {
-      // navigate("/login");
-    } else {
-      getOwnData();
-    }
-  }, [navigate]);
-  useEffect(() => {
-    getOwnData();
+    // getOwnData();
   }, []);
 
   const getOwnData = () => {
     // getUserOwnFunc().then((res: any) => {
     //   console.log(res, "res");
     // });
-    getUserOwnMenu().then((res: any) => {
-      console.log(res, "res");
-      setMenuData(res.Data);
-    });
+    // getUserOwnMenu().then((res: any) => {
+    //   console.log(res, "res");
+    //   setMenuData(res.Data);
+    // });
   };
 
   const onCollapse = (collapsed: boolean) => {

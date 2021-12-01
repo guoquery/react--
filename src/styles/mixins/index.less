@@ -1,0 +1,32 @@
+.flex {
+  display: flex;
+}
+
+.flexR(@justContent: center, @alignItem: center) {
+  .flex();
+  flex-direction: row;
+  justify-content: @justContent;
+  align-items: @alignItem;
+}
+
+.flexC(@justContent: center, @alignItem: center) {
+  .flex();
+  flex-direction: column;
+  justify-content: @justContent;
+  align-items: @alignItem;
+}
+
+.wh(@width, @height: @width) {
+  width: @width;
+  height: @height;
+}
+
+.maxWH(@width, @height: @width) {
+  max-width: @width;
+  max-height: @height;
+}
+
+.minWH(@width, @height: @width) {
+  min-width: @width;
+  min-height: @height;
+}

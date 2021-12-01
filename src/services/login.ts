@@ -2,7 +2,7 @@ import { useState } from "react";
 import { request } from "./request";
 
 export async function getToken(param: any) {
-  return request.urlencodedPost("token", param);
+  return request.post("api/account/login", param);
 }
 
 export async function getUserOwnFunc() {
