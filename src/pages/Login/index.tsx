@@ -10,21 +10,29 @@ import { LInput } from "../../components/LInput";
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
-
+  const [formData, setFormData] = useState({});
+  const [submitDisable, setSubmitDisable] = useState(false);
   useEffect(() => {
-    console.log("BaseLayout");
+    // console.log("login");
+    setSubmitDisable(!Object.values(formData).every((el: any) => el));
     // login();
-  });
+  }, [formData]);
+
   const login = () => {
-    getToken({
-      userNameOrEmailAddress: "admin",
-      password: "1q2w3E*",
-      rememberMe: true,
-    }).then((res: any) => {
-      api.token = res.access_token;
-      // navigate("/");
-      console.log("res", res);
+    if (submitDisable) {
+      return;
+    }
+    getToken(formData).then((res: any) => {
+      if (res.result === 1) {
+        api.token = "res.access_token";
+        navigate("/Dashboard");
+      }
     });
+  };
+  const onInputChange = (e: { target: { value: string } } | undefined, name: string) => {
+    if (e) {
+      setFormData({ ...formData, ...{ [name]: e.target.value } });
+    }
   };
   return (
     <div className="lx-login lx-page">
@@ -39,12 +47,16 @@ export const Login: React.FC = () => {
           <div className="title">Login</div>
           <div className="form">
             <CForm className="row g-3">
-              <LInput type="text" label="UserName"></LInput>
-              <LInput type="password" label="Password"></LInput>
+              <LInput
+                type="text"
+                label="UserName"
+                onChange={(e) => onInputChange(e, "userNameOrEmailAddress")}
+              ></LInput>
+              <LInput type="password" label="Password" onChange={(e) => onInputChange(e, "password")}></LInput>
               <div className="submit g-3">
                 <div className="forgot">Forgot password ?</div>
                 <div className="login">
-                  <CButton color="secondary" onClick={login}>
+                  <CButton color="secondary" onClick={login} disabled={submitDisable}>
                     Login
                   </CButton>
                 </div>

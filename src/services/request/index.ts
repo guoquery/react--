@@ -77,7 +77,7 @@ class LRequest {
         resolve(await this.interceptors.response(response));
       } catch (error) {
         // console.log("error", error);
-        reject();
+        reject(error);
       }
     });
   }

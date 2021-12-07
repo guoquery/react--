@@ -1,24 +1,20 @@
 import React, { useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { BaseLayout } from "./layouts/BaseLayout";
 import { Login } from "./pages/Login";
-import { Welcome } from "./pages/Welcome";
+import { Home } from "./pages/Home";
+import { api } from "./services/api.service";
+import { LXRoute } from "./router";
 
 function App() {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/Login");
     // if (!api.token || api.token === "") {
+    //   navigate("/Login");
     // } else {
-    //   getOwnData();
     // }
   }, [navigate]);
-  return (
-    <Routes>
-      <Route path="/" element={<BaseLayout />}></Route>
-      <Route path="/login" element={<Login />} />
-    </Routes>
-  );
+  return <LXRoute></LXRoute>;
 }
 
 export default App;
